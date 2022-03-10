@@ -1,13 +1,19 @@
-# Word Master
+# Linkdle
 
-🔗 https://octokatherine.github.io/word-master/
+🔗 https://github.com/rpretzels/linkdle/
 
-Heavily inspired by [Wordle](https://www.powerlanguage.co.uk/wordle/), Word Master is a word guessing game similar to Mastermind. I created this because I love Wordle, but the once a day limit leaves me wanting more.
+A variant of the Mastermind-style game Word-Master from octokatherine
+(https://octokatherine.github.io/word-master/).
+
+The Linkdle game features guessing the word that connect two
+other shown words. For example, connect: ALONE - NEEDY - YEARN.
 
 ## Rules
 
 You have 6 guesses to guess the correct word.
-Each guess can be any valid word.
+
+The correct word starts with the last 1-3 characters of the 1st shown word,
+and ends with 1-3 characters from the start of the 2nd word.
 
 After submitting a guess, the letters will turn gray, green, or yellow.
 
@@ -19,4 +25,4 @@ After submitting a guess, the letters will turn gray, green, or yellow.
 
 Feel free to open an issue for any bugs or feature requests.
 
-To contribute to the code, see [CONTRIBUTING.md](https://github.com/octokatherine/word-master/blob/main/CONTRIBUTING.md)
+To contribute to the code, see [CONTRIBUTING.md](https://github.com/rpretzels/linkdle/blob/main/CONTRIBUTING.md)

@@ -23,13 +23,10 @@ export const difficulty = {
   hard: 'hard',
 }
 
-const getRandomAnswer = () => {
-  const randomIndex = Math.floor(Math.random() * answers.length)
-  return answers[randomIndex].toUpperCase()
-}
-
 type State = {
   answer: () => string
+  answer1: () => string
+  answer3: () => string
   gameState: string
   board: string[][]
   cellStatuses: string[][]
@@ -39,9 +36,73 @@ type State = {
   submittedInvalidWord: boolean
 }
 
+function getrsz(max:number) {
+	if ((max > 2) && ((Math.floor(Math.random() * 100)) > 65))
+		return 3;
+	if ((max > 1) && ((Math.floor(Math.random() * 100)) > 55))
+		return 2;
+	return 1;
+}
+
+function getR(count:number, pword:string) {
+	var ans:string = "aa"
+
+      for (let i = 0; i < (2 * answers.length); i++) {
+ 	const ridx1 = Math.floor(Math.random() * answers.length);
+	ans = answers[ridx1].toUpperCase();
+
+	if (pword[4] !== ans[count - 1]) {continue};
+	if (count > 1) {
+		if (pword[3] !== ans[count - 2]) {continue};
+	}
+	if (count > 2) {
+		if (pword[2] !== ans[count - 3]) {continue};
+	}	
+
+	return ans;
+      }
+      return "X";
+}
+
 function App() {
+  	const randomIndex = Math.floor(Math.random() * answers.length)
+ 	const a1 = answers[randomIndex].toUpperCase()
+
+	var ans:string = "aa"
+	var a3:string = "aa"
+	var len:number = 0;
+
+	// Choose 1st of 3 words	
+      	for (let i = 0; i < answers.length; i++) {
+  		const randomIndex = Math.floor(Math.random() * answers.length)
+ 		const a1 = answers[randomIndex].toUpperCase()
+
+		// Try not to overuse those ending in "y" or "d"
+		if ((a1[4] === 'y') && ((Math.floor(Math.random() * 100)) < 92))
+			continue;
+		if ((a1[4] === 'd') && ((Math.floor(Math.random() * 100)) < 20))
+			continue;
+	}
+
+      	for (let i = 0; i < answers.length; i++) {
+		len = getrsz(3);
+		ans = getR(len, a1);
+		if (ans !== "X")
+			break;
+	}
+
+      	for (let i = 0; i < answers.length; i++) {
+		len = getrsz(4 - len);
+		a3 = getR(len, ans);
+		if (a3 !== "X")
+			break;
+	}
+
+
   const initialStates: State = {
-    answer: () => getRandomAnswer(),
+    answer: () => ans,
+    answer1: () => a1,
+    answer3: () => a3,
     gameState: state.playing,
     board: [
       ['', '', '', '', ''],
@@ -65,6 +126,8 @@ function App() {
   }
 
   const [answer, setAnswer] = useLocalStorage('stateAnswer', initialStates.answer())
+  const [answer1, setAnswer1] = useLocalStorage('stateAnswer1', initialStates.answer1())
+  const [answer3, setAnswer3] = useLocalStorage('stateAnswer3', initialStates.answer3())
   const [gameState, setGameState] = useLocalStorage('stateGameState', initialStates.gameState)
   const [board, setBoard] = useLocalStorage('stateBoard', initialStates.board)
   const [cellStatuses, setCellStatuses] = useLocalStorage(
@@ -320,6 +383,8 @@ function App() {
     }
 
     setAnswer(initialStates.answer())
+    setAnswer1(initialStates.answer1())
+    setAnswer3(initialStates.answer3())
     setGameState(initialStates.gameState)
     setBoard(initialStates.board)
     setCellStatuses(initialStates.cellStatuses)
@@ -375,8 +440,8 @@ function App() {
           >
             <Settings />
           </button>
-          <h1 className="flex-1 text-center text-xl xxs:text-2xl sm:text-4xl tracking-wide font-bold font-righteous">
-            WORD MASTER
+          <h1 className="flex-1 text-center text-xl xxs:text-2xl sm:text-4xl tracking-wide font-bold">
+            Linkdle
           </h1>
           <button
             type="button"
@@ -386,6 +451,11 @@ function App() {
             <Info />
           </button>
         </header>
+
+     <div className="justify-center mt-2 mx-5 text-2xl text-black dark:text-white text-center">
+        Connect: {answer1}-{answer3}
+     </div>
+
         <div className="flex items-center flex-col py-3 flex-1 justify-center relative">
           <div className="relative">
             <div className="grid grid-cols-5 grid-flow-row gap-4">
@@ -397,7 +467,7 @@ function App() {
                       rowNumber,
                       colNumber,
                       letter
-                    )} inline-flex items-center font-medium justify-center text-lg w-[13vw] h-[13vw] xs:w-14 xs:h-14 sm:w-20 sm:h-20 rounded-full`}
+                    )} inline-flex items-center font-medium justify-center text-2xl w-[13vw] h-[13vw] xs:w-14 xs:h-14 sm:w-20 sm:h-20`}
                   >
                     {letter}
                   </span>

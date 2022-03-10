@@ -24,7 +24,12 @@ export const InfoModal = ({ isOpen, handleClose, darkMode, styles }: Props) => (
         <div className="flex-1 w-full sm:text-base text-sm">
           <h1 className="text-center sm:text-3xl text-2xl">How to play</h1>
           <ul className="list-disc pl-5 block sm:text-base text-sm">
-            <li className="mt-6 mb-2">You have 6 guesses to guess the correct word.</li>
+
+	<li className="mt-6 mb-2">Guess the secret word that connects the given two words. Example: ALONE - <b>NEEDY</b> - YEARN</li>
+
+	<li className="mt-2 mb-2">The answer always starts with the last 1-3 characters of the 1st word, and ends with 1-3 characters from the start of the 2nd word.</li>
+
+            <li className="mt-2 mb-2">You have 6 guesses to guess the correct word.</li>
             <li className="mb-2">You can guess any valid word.</li>
             <li className="mb-2">
               After each guess, each letter will turn green, yellow, or gray.
@@ -54,7 +59,7 @@ export const InfoModal = ({ isOpen, handleClose, darkMode, styles }: Props) => (
           <span>This project is open source on</span>
           <a
             className="ml-[6px] rounded-full h-5 w-5 sm:h-6 sm:w-6"
-            href="https://github.com/octokatherine/word-master"
+            href="https://github.com/rpretzels/linkdle"
             target="_blank"
             rel="noreferrer"
           >

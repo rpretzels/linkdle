@@ -100,9 +100,9 @@ export const SettingsModal = ({
                 target="_blank"
                 rel="noreferrer"
               >
-                buying me a coffee
+                buying octokatherine a coffee
               </a>
-              <span className="ml-1 text-xs">💛</span>
+              <span className="ml-1 text-xs">:)</span>
             </div>
             <a
               href="https://www.buymeacoffee.com/katherinecodes"
