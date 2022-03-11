@@ -1,6 +1,6 @@
 # Linkdle
 
-🔗 https://github.com/rpretzels/linkdle/
+🔗 https://rpretzels.github.io/linkdle/
 
 A variant of the Mastermind-style game Word-Master from octokatherine
 (https://octokatherine.github.io/word-master/).
