@@ -36,6 +36,47 @@ type State = {
   submittedInvalidWord: boolean
 }
 
+
+function filterl(rw:string) {
+	var cstart:string = "A";
+	var scode:number = cstart.charCodeAt(0);
+	var c:string;
+	var idx:number;
+	var rn:number;
+
+	let lfilter = new Array(26);
+
+      	for (let i = 0; i < 26; i++) {
+		lfilter[i] = 0;
+	}
+
+	lfilter[0] = 60;
+	lfilter["D".charCodeAt(0) - scode] = 60;
+	lfilter["E".charCodeAt(0) - scode] = 25;
+	lfilter["H".charCodeAt(0) - scode] = 60;
+	lfilter["I".charCodeAt(0) - scode] = 30;
+	lfilter["K".charCodeAt(0) - scode] = 14;
+	lfilter["L".charCodeAt(0) - scode] = 36;
+	lfilter["N".charCodeAt(0) - scode] = 20;
+	lfilter["O".charCodeAt(0) - scode] = 30;
+	lfilter["T".charCodeAt(0) - scode] = 40;
+	lfilter["U".charCodeAt(0) - scode] = 30;
+	lfilter["V".charCodeAt(0) - scode] = 60;
+	lfilter["Y".charCodeAt(0) - scode] = 12;
+
+	c = rw[0];
+	idx = c.charCodeAt(0) - scode;
+	if (lfilter[idx] === 0)
+		return 0;
+
+	rn = Math.floor(Math.random() * 100);
+
+	if (lfilter[idx] < rn)
+		return 1;
+
+	return 0;
+}
+
 function getrsz(max:number) {
 	if ((max > 2) && ((Math.floor(Math.random() * 100)) > 65))
 		return 3;
@@ -65,30 +106,36 @@ function getR(count:number, pword:string) {
 }
 
 function App() {
-  	const randomIndex = Math.floor(Math.random() * answers.length)
- 	const a1 = answers[randomIndex].toUpperCase()
-
-	var ans:string = "aa"
-	var a3:string = "aa"
+	var ans:string = "aa";
+	var a3:string = "aa";
+	var a1:string = "aa";
 	var len:number = 0;
 
 	// Choose 1st of 3 words	
       	for (let i = 0; i < answers.length; i++) {
-  		const randomIndex = Math.floor(Math.random() * answers.length)
- 		const a1 = answers[randomIndex].toUpperCase()
+  		const randomIndex = Math.floor(Math.random() * answers.length);
+ 		a1 = answers[randomIndex].toUpperCase();
 
-		// Try not to overuse those ending in "y" or "d"
-		if ((a1[4] === 'y') && ((Math.floor(Math.random() * 100)) < 92))
+		//Try not to have too many candidates that end in "y" or "e"
+		if ((a1[4] === 'Y') && ((Math.floor(Math.random() * 100)) < 50))
 			continue;
-		if ((a1[4] === 'd') && ((Math.floor(Math.random() * 100)) < 20))
+		if ((a1[4] === 'E') && ((Math.floor(Math.random() * 100)) < 50))
 			continue;
 	}
 
       	for (let i = 0; i < answers.length; i++) {
+		var filtres:number;
+
 		len = getrsz(3);
 		ans = getR(len, a1);
-		if (ans !== "X")
-			break;
+		if (ans === "X")
+			continue;
+
+		filtres = filterl(ans);
+		if (filtres === 1)
+			continue;
+
+		break;
 	}
 
       	for (let i = 0; i < answers.length; i++) {
@@ -97,7 +144,6 @@ function App() {
 		if (a3 !== "X")
 			break;
 	}
-
 
   const initialStates: State = {
     answer: () => ans,
@@ -467,7 +513,7 @@ function App() {
                       rowNumber,
                       colNumber,
                       letter
-                    )} inline-flex items-center font-medium justify-center text-2xl w-[13vw] h-[13vw] xs:w-14 xs:h-14 sm:w-20 sm:h-20`}
+                    )} inline-flex items-center font-medium justify-center text-2xl w-[13vw] h-[13vw] xs:w-14 xs:h-14 sm:w-20 sm:h-16`}
                   >
                     {letter}
                   </span>
