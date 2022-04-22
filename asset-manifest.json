@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/linkdle/static/css/main.67bc74e5.css",
-    "main.js": "/linkdle/static/js/main.8f29de95.js",
+    "main.js": "/linkdle/static/js/main.668a1b5e.js",
     "static/media/Cross.png": "/linkdle/static/media/Cross.cbf77228e847522eff11.png",
     "static/media/Ranade-Variable.ttf": "/linkdle/static/media/Ranade-Variable.bb177f94a709e8e8f396.ttf",
     "index.html": "/linkdle/index.html",
@@ -10,10 +10,10 @@
     "static/media/Info.svg": "/linkdle/static/media/Info.ee717ac430bb01bfbbd42aa3dbffe913.svg",
     "static/media/Close.svg": "/linkdle/static/media/Close.f34771d5d250820d8c5ec83c816bf8f5.svg",
     "main.67bc74e5.css.map": "/linkdle/static/css/main.67bc74e5.css.map",
-    "main.8f29de95.js.map": "/linkdle/static/js/main.8f29de95.js.map"
+    "main.668a1b5e.js.map": "/linkdle/static/js/main.668a1b5e.js.map"
   },
   "entrypoints": [
     "static/css/main.67bc74e5.css",
-    "static/js/main.8f29de95.js"
+    "static/js/main.668a1b5e.js"
   ]
 }
