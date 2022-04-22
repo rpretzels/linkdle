@@ -171,17 +171,17 @@ function App() {
     submittedInvalidWord: false,
   }
 
-  const [answer, setAnswer] = useLocalStorage('stateAnswer', initialStates.answer())
-  const [answer1, setAnswer1] = useLocalStorage('stateAnswer1', initialStates.answer1())
-  const [answer3, setAnswer3] = useLocalStorage('stateAnswer3', initialStates.answer3())
-  const [gameState, setGameState] = useLocalStorage('stateGameState', initialStates.gameState)
-  const [board, setBoard] = useLocalStorage('stateBoard', initialStates.board)
+  const [answer, setAnswer] = useLocalStorage('LstateAnswer', initialStates.answer())
+  const [answer1, setAnswer1] = useLocalStorage('LstateAnswer1', initialStates.answer1())
+  const [answer3, setAnswer3] = useLocalStorage('LstateAnswer3', initialStates.answer3())
+  const [gameState, setGameState] = useLocalStorage('LstateGameState', initialStates.gameState)
+  const [board, setBoard] = useLocalStorage('LstateBoard', initialStates.board)
   const [cellStatuses, setCellStatuses] = useLocalStorage(
     'stateCellStatuses',
     initialStates.cellStatuses
   )
-  const [currentRow, setCurrentRow] = useLocalStorage('stateCurrentRow', initialStates.currentRow)
-  const [currentCol, setCurrentCol] = useLocalStorage('stateCurrentCol', initialStates.currentCol)
+  const [currentRow, setCurrentRow] = useLocalStorage('LstateCurrentRow', initialStates.currentRow)
+  const [currentCol, setCurrentCol] = useLocalStorage('LstateCurrentCol', initialStates.currentCol)
   const [letterStatuses, setLetterStatuses] = useLocalStorage(
     'stateLetterStatuses',
     initialStates.letterStatuses()
@@ -191,17 +191,17 @@ function App() {
     initialStates.submittedInvalidWord
   )
 
-  const [currentStreak, setCurrentStreak] = useLocalStorage('current-streak', 0)
-  const [longestStreak, setLongestStreak] = useLocalStorage('longest-streak', 0)
+  const [currentStreak, setCurrentStreak] = useLocalStorage('Lcurrent-streak', 0)
+  const [longestStreak, setLongestStreak] = useLocalStorage('Llongest-streak', 0)
   const [modalIsOpen, setIsOpen] = useState(false)
-  const [firstTime, setFirstTime] = useLocalStorage('first-time', true)
+  const [firstTime, setFirstTime] = useLocalStorage('Lfirst-time', true)
   const [guessesInStreak, setGuessesInStreak] = useLocalStorage(
     'guesses-in-streak',
     firstTime ? 0 : -1
   )
   const [infoModalIsOpen, setInfoModalIsOpen] = useState(firstTime)
   const [settingsModalIsOpen, setSettingsModalIsOpen] = useState(false)
-  const [difficultyLevel, setDifficultyLevel] = useLocalStorage('difficulty', difficulty.normal)
+  const [difficultyLevel, setDifficultyLevel] = useLocalStorage('Ldifficulty', difficulty.normal)
   const getDifficultyLevelInstructions = () => {
     if (difficultyLevel === difficulty.easy) {
       return 'Guess any 5 letters'
@@ -212,7 +212,7 @@ function App() {
     }
   }
   const eg: { [key: number]: string } = {}
-  const [exactGuesses, setExactGuesses] = useLocalStorage('exact-guesses', eg)
+  const [exactGuesses, setExactGuesses] = useLocalStorage('Lexact-guesses', eg)
 
   const openModal = () => setIsOpen(true)
   const closeModal = () => setIsOpen(false)
@@ -221,7 +221,7 @@ function App() {
     setInfoModalIsOpen(false)
   }
 
-  const [darkMode, setDarkMode] = useLocalStorage('dark-mode', false)
+  const [darkMode, setDarkMode] = useLocalStorage('Ldark-mode', false)
   const toggleDarkMode = () => setDarkMode((prev: boolean) => !prev)
 
   useEffect(

@@ -5,7 +5,7 @@
 A variant of the Mastermind-style game Word-Master from octokatherine
 (https://octokatherine.github.io/word-master/).
 
-The Linkdle game features guessing the word that connect two
+The Linkdle game features guessing the word that connects two
 other shown words. For example, connect: ALONE - NEEDY - YEARN.
 
 ## Rules
